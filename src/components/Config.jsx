@@ -43,14 +43,10 @@ Config.propTypes = {
     extends: PropTypes.string.isRequired,
     rules: PropTypes.shape({}),
   }).isRequired,
+  mode: PropTypes.string.isRequired,
 };
 
-export default connect(
-  state => ({
-    config: state.config,
-    mode: state.mode,
-  }),
-  null,
-  null,
-  { pure: false },
-)(Config);
+export default connect(state => ({
+  config: state.config,
+  mode: state.mode,
+}))(Config);

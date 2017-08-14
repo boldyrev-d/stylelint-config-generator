@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import 'normalize.css';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
@@ -28,6 +29,11 @@ const App = (props) => {
       <Footer />
     </Wrapper>
   );
+};
+
+App.propTypes = {
+  // from connect
+  mode: PropTypes.string.isRequired,
 };
 
 export default connect(state => ({
