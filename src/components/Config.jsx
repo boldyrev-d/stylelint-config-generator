@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 const Section = styled.section`
-  flex-basis: 50%;
+  flex-basis: ${props => (props.mode === 'displayOptions' ? '50%' : '100%')};
   padding: 30px 50px;
-  margin-right: 20px;
+  margin-right: ${props => (props.mode === 'displayOptions' ? '20px' : '0')};
   color: #444;
   background-color: #fff;
 `;
@@ -25,10 +25,10 @@ const Code = styled.pre`
 
 const Config = (props) => {
   // console.log(this.props.config);
-  const configObject = JSON.stringify(props.config, null, 2);
+  const configObject = JSON.stringify(props.config, null, 4);
 
   return (
-    <Section>
+    <Section mode={props.mode}>
       <Title>Your config:</Title>
       <Code>
         {configObject}
@@ -38,12 +38,19 @@ const Config = (props) => {
 };
 
 Config.propTypes = {
+  // from connect
   config: PropTypes.shape({
     extends: PropTypes.string.isRequired,
     rules: PropTypes.shape({}),
   }).isRequired,
 };
 
-export default connect(state => ({
-  config: state.config,
-}))(Config);
+export default connect(
+  state => ({
+    config: state.config,
+    mode: state.mode,
+  }),
+  null,
+  null,
+  { pure: false },
+)(Config);

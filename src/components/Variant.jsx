@@ -21,6 +21,7 @@ const Code = styled.pre`
   margin-right: -20px;
   padding-left: 20px;
   padding-right: 20px;
+  font-family: 'Inconsolata', monospace;
   background-color: rgba(68, 68, 68, 0.05);
 `;
 
