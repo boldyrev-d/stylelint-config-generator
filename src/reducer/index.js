@@ -1,3 +1,4 @@
+import rules from '../rules';
 import { NEXT_STEP } from '../constants';
 
 const defaultState = {
@@ -7,6 +8,7 @@ const defaultState = {
     extends: 'stylelint-config-standard',
     rules: {},
   },
+  rules,
 };
 
 export default (state = defaultState, action) => {

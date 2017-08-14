@@ -38,8 +38,9 @@ const Header = () =>
       </Link>.
     </Paragraph>
     <Paragraph>
-      Choose the rule variants you prefer and paste config object to <Mark>.stylelintrc</Mark>. Read
-      more about it in <Link href="https://stylelint.io/user-guide/configuration/">docs</Link>.
+      Step by step choose the rule variants you prefer and paste config object to{' '}
+      <Mark>.stylelintrc</Mark>. Read more about it in{' '}
+      <Link href="https://stylelint.io/user-guide/configuration/">docs</Link>.
     </Paragraph>
   </Wrapper>);
 
