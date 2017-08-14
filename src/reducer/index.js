@@ -1,5 +1,5 @@
 import rules from '../rules';
-import { NEXT_STEP } from '../constants';
+import { NEXT_STEP, PREVIOUS_STEP, SKIP_STEP } from '../constants';
 
 const defaultState = {
   currentStep: 0,
@@ -16,7 +16,41 @@ export default (state = defaultState, action) => {
 
   switch (type) {
     case NEXT_STEP:
-      return 0;
+      if (state.currentStep + 1 < rules.length) {
+        return {
+          ...state,
+          currentStep: state.currentStep + 1,
+          config: {
+            ...state.config,
+            rules: {
+              ...state.config.rules,
+              [payload.id]: payload.value,
+            },
+          },
+        };
+      }
+      return {
+        ...state,
+        mode: 'displayConfig',
+      };
+
+    case PREVIOUS_STEP:
+      return {
+        ...state,
+        currentStep: state.currentStep - 1,
+      };
+
+    case SKIP_STEP:
+      if (state.currentStep + 1 < rules.length) {
+        return {
+          ...state,
+          currentStep: state.currentStep + 1,
+        };
+      }
+      return {
+        ...state,
+        mode: 'displayConfig',
+      };
 
     default:
       return state;

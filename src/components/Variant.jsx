@@ -25,7 +25,7 @@ const Code = styled.pre`
 `;
 
 const Variant = props =>
-  (<Item>
+  (<Item onClick={() => props.nextStep(props.id, props.variant.value)}>
     <p>
       {props.variant.hint}
     </p>
@@ -40,6 +40,8 @@ Variant.propTypes = {
     hint: PropTypes.string.isRequired,
     value: PropTypes.oneOfType([PropTypes.bool]).isRequired,
   }).isRequired,
+  nextStep: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default Variant;
