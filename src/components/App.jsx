@@ -1,12 +1,24 @@
 import React from 'react';
 import 'normalize.css';
 import styled from 'styled-components';
+import Header from './Header';
+import Footer from './Footer';
+
+const Wrapper = styled.div`
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px 0;
+`;
+
+const Main = styled.main`display: flex;`;
 
 const App = () =>
-  (<div>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, fugiat tempora nemo incidunt
-    ipsum nesciunt possimus, laborum eos, dolores natus minus quasi voluptas. Architecto animi, ad
-    excepturi debitis, veritatis error.
-  </div>);
+  (<Wrapper>
+    <Header />
+    <Main>
+      <div />
+    </Main>
+    <Footer />
+  </Wrapper>);
 
 export default App;
