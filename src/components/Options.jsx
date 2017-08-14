@@ -18,6 +18,24 @@ const Title = styled.h2`
   font-size: 20px;
 `;
 
+const Button = styled.button`
+  padding: 8px 15px;
+  font-size: 16px;
+  color: ${props => (props.disabled ? '#666' : '#fff')};
+  background-color: ${props => (props.disabled ? '#ccc' : 'crimson')};
+  border: none;
+  cursor: ${props => (props.disabled ? '#auto' : 'pointer')};
+  transition: background-color .2s ease;
+
+  &:hover {
+    background-color: ${props => (props.disabled ? '#ccc' : '#c20b2b')};
+  }
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+`;
+
 const Options = (props) => {
   const rule = props.rules[props.currentStep];
 
@@ -33,10 +51,10 @@ const Options = (props) => {
     <Section>
       <Title>Choose the code sample you prefer:</Title>
       {variants}
-      <button disabled={backButtonDisabled} onClick={props.prevStep}>
+      <Button disabled={backButtonDisabled} onClick={props.prevStep}>
         Back
-      </button>
-      <button onClick={props.skipStep}>Skip</button>
+      </Button>
+      <Button onClick={props.skipStep}>Skip</Button>
     </Section>
   );
 };
