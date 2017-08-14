@@ -31,6 +31,13 @@ export default (state = defaultState, action) => {
       }
       return {
         ...state,
+        config: {
+          ...state.config,
+          rules: {
+            ...state.config.rules,
+            [payload.id]: payload.value,
+          },
+        },
         mode: 'displayConfig',
       };
 
