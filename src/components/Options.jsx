@@ -45,8 +45,14 @@ const Button = styled.button`
   }
 `;
 
+const Pagination = styled.div`
+  margin: 10px 0;
+  text-align: center;
+`;
+
 const Options = (props) => {
-  const rule = props.rules[props.currentStep];
+  const { rules, currentStep } = props;
+  const rule = rules[currentStep];
 
   /* eslint-disable react/no-array-index-key */
   const variants = rule.variants.map((variant, index) =>
@@ -54,7 +60,7 @@ const Options = (props) => {
   );
   /* eslint-enable react/no-array-index-key */
 
-  const backButtonDisabled = !props.currentStep;
+  const backButtonDisabled = !currentStep;
 
   return (
     <Section>
@@ -64,6 +70,9 @@ const Options = (props) => {
         Back
       </Button>
       <Button onClick={props.skipStep}>Skip</Button>
+      <Pagination>
+        Page {currentStep + 1} of {rules.length}
+      </Pagination>
     </Section>
   );
 };
