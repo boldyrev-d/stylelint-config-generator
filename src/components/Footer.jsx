@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Wrapper = styled.footer`
   display: flex;
   justify-content: center;
-  margin: 1rem 0;
+  margin: 1.5rem 0;
 `;
 
 const Logo = styled.img`

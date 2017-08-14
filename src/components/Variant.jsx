@@ -23,6 +23,7 @@ const Code = styled.pre`
   padding-right: 20px;
   font-family: 'Inconsolata', monospace;
   background-color: rgba(68, 68, 68, 0.05);
+  overflow-x: auto;
 `;
 
 const Variant = props =>

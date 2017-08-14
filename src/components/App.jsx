@@ -7,6 +7,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Config from './Config';
 import Options from './Options';
+import { media } from '../style-utils';
 
 const Wrapper = styled.div`
   max-width: 1300px;
@@ -14,7 +15,13 @@ const Wrapper = styled.div`
   padding: 0 20px 0;
 `;
 
-const Main = styled.main`display: flex;`;
+const Main = styled.main`
+  display: flex;
+
+  ${media.tablet`
+    flex-direction: column;
+  `};
+`;
 
 const App = (props) => {
   const optionsComponent = props.mode === 'displayOptions' ? <Options /> : null;

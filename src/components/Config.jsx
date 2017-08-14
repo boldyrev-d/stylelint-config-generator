@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import { media } from '../style-utils';
 
 const Section = styled.section`
   flex-basis: ${props => (props.mode === 'displayOptions' ? '50%' : '100%')};
@@ -9,6 +10,14 @@ const Section = styled.section`
   margin-right: ${props => (props.mode === 'displayOptions' ? '20px' : '0')};
   color: #444;
   background-color: #fff;
+
+  ${media.tablet`
+    margin-right: 0;
+  `};
+
+  ${media.mobile`
+    padding: 15px 20px;
+  `};
 `;
 
 const Title = styled.h2`

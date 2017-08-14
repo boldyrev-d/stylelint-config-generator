@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import Variant from './Variant';
-
+import { media } from '../style-utils';
 import { nextStep, prevStep, skipStep } from '../AC';
 
 const Section = styled.section`
@@ -11,6 +11,15 @@ const Section = styled.section`
   padding: 30px 50px;
   background-color: #fff;
   color: #444;
+
+  ${media.tablet`
+    order: -1;
+    margin-bottom: 30px;
+  `};
+
+  ${media.mobile`
+    padding: 15px 20px;
+  `};
 `;
 
 const Title = styled.h2`

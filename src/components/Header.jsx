@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Wrapper = styled.header`margin: 1.5rem 0 .5rem;`;
+const Wrapper = styled.header`margin: 1.5rem 0;`;
 
 const Title = styled.h1`
   margin: 0 0 1rem;
