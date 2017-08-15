@@ -31,5 +31,8 @@
     "eslint-plugin-react": "^7.2.1",
     "husky": "^0.14.3",
     "now": "^7.3.0"
+  },
+  "now": {
+    "alias": "stylelint-config-generator"
   }
 }
