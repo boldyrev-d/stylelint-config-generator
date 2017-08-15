@@ -86,4 +86,22 @@ export default [
       },
     ],
   },
+  {
+    id: 'shorthand-property-no-redundant-values',
+    hint: 'This rule alerts you when you use redundant values in a shorthand properties.',
+    variants: [
+      {
+        hint: 'Disallow redundant values in shorthand properties',
+        invalidCode:
+          'a { margin: 1px 1px; }\na { padding: 1px 1px 1px 1px; }\na { border-radius: 1px 2px 1px 2px; }',
+        validCode: 'a { margin: 1px; }\na { margin: 1px 1px 1px 2px; }',
+        value: true,
+      },
+      {
+        hint: 'Allow redundant values in shorthand properties',
+        validCode: 'a { -webkit-border-radius: 1px 1px 1px 1px; }',
+        value: false,
+      },
+    ],
+  },
 ];
