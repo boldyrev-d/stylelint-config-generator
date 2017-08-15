@@ -141,4 +141,20 @@ export default [
       },
     ],
   },
+  {
+    id: 'declaration-block-no-duplicate-properties',
+    variants: [
+      {
+        hint: 'Disallow duplicate properties within declaration blocks.',
+        invalidCode: 'a { <mark>color</mark>: pink; <mark>color</mark>: orange; }',
+        validCode: 'a { color: pink; }',
+        value: true,
+      },
+      {
+        hint: 'Allow duplicate properties within declaration blocks.',
+        validCode: 'a { <mark>color</mark>: pink; background: orange; <mark>color</mark>: orange }',
+        value: false,
+      },
+    ],
+  },
 ];
