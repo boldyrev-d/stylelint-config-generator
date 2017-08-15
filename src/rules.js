@@ -399,4 +399,21 @@ export default [
       },
     ],
   },
+  {
+    id: 'no-extra-semicolons',
+    hint: 'Disallow extra semicolons. This rule ignores semicolons after Less mixins.',
+    variants: [
+      {
+        hint: 'Disallow extra semicolons.',
+        invalidCode: '@import "x.css"<mark>;;</mark>\na { color: pink<mark>;;</mark> }',
+        validCode: '@import "x.css"<mark>;</mark>',
+        value: true,
+      },
+      {
+        hint: 'Allow extra semicolons.',
+        validCode: 'a { <mark>;</mark>color: pink; }',
+        value: false,
+      },
+    ],
+  },
 ];
