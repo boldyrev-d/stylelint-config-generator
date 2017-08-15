@@ -122,4 +122,23 @@ export default [
       },
     ],
   },
+  {
+    id: 'keyframe-declaration-no-important',
+    variants: [
+      {
+        hint: 'Disallow !important within keyframe declarations.',
+        invalidCode:
+          '@keyframes important1 {\n  from {\n    margin-top: 50px;\n  }\n  to {\n    margin-top: 100px !important;\n  }\n}',
+        validCode:
+          '@keyframes important1 {\n  from {\n    margin-top: 50px;\n  }\n  to {\n    margin-top: 100px;\n  }\n}',
+        value: true,
+      },
+      {
+        hint: 'Allow !important within keyframe declarations.',
+        validCode:
+          '@keyframes important1 {\n  from {\n    margin-top: 50px;\n  }\n  to {\n    margin-top: 100px ! important;\n  }\n}',
+        value: false,
+      },
+    ],
+  },
 ];
