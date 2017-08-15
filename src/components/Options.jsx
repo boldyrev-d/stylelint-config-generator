@@ -47,14 +47,14 @@ const Options = (props) => {
 
   return (
     <Section>
-      <Title>Choose the code sample you prefer:</Title>
+      <Title>Choose the code sample you like more:</Title>
       {variants}
       <BasicButton disabled={backButtonDisabled} onClick={props.prevStep}>
         Back
       </BasicButton>
       <BasicButton onClick={props.skipStep}>Skip</BasicButton>
       <Pagination>
-        Page {currentStep + 1} of {rules.length}
+        Rule {currentStep + 1} of {rules.length}
       </Pagination>
     </Section>
   );
