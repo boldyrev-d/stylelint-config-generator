@@ -32,4 +32,22 @@ export default [
       },
     ],
   },
+  {
+    id: 'function-calc-no-unspaced-operator',
+    hint:
+      'Disallow an unspaced operator within calc functions. Before the operator, there must be a single whitespace or a newline plus indentation. After the operator, there must be a single whitespace or a newline.',
+    variants: [
+      {
+        hint: 'Disallow an unspaced operator within calc functions.',
+        invalidCode: 'a { top: calc(1px<mark>+ </mark>2px); }',
+        validCode: 'a { top: calc(1px<mark> + </mark>2px); }',
+        value: true,
+      },
+      {
+        hint: 'Allow an unspaced operator within calc functions.',
+        validCode: 'a { top: calc(1px+2px); }',
+        value: false,
+      },
+    ],
+  },
 ];
