@@ -104,4 +104,22 @@ export default [
       },
     ],
   },
+  {
+    id: 'property-no-unknown',
+    hint:
+      'This rule considers properties defined in the <a href="https://github.com/betit/known-css-properties#source">CSS Specifications and browser specific properties</a> to be known.',
+    variants: [
+      {
+        hint: 'Disallow unknown properties.',
+        invalidCode: 'a { <mark>colr</mark>: blue; }',
+        validCode: 'a { <mark>color</mark>: green; }',
+        value: true,
+      },
+      {
+        hint: 'Allow unknown properties.',
+        validCode: 'a { <mark>my-property</mark>: 1; }',
+        value: false,
+      },
+    ],
+  },
 ];
