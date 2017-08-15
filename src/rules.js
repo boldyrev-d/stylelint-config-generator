@@ -177,4 +177,21 @@ export default [
       },
     ],
   },
+  {
+    id: 'declaration-block-no-shorthand-property-overrides',
+    hint: 'Disallow shorthand properties that override related longhand properties.',
+    variants: [
+      {
+        hint: 'Disallow shorthand properties.',
+        invalidCode: 'a {\n  padding-left: 10px;\n  padding: 20px;\n}',
+        validCode: 'a {\n  padding: 10px;\n  padding-left: 20px;\n}',
+        value: true,
+      },
+      {
+        hint: 'Allow shorthand properties.',
+        validCode: 'a {\n  transition-property: opacity;\n  transition: opacity 1s linear;\n}',
+        value: false,
+      },
+    ],
+  },
 ];
