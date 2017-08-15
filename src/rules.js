@@ -382,4 +382,21 @@ export default [
       },
     ],
   },
+  {
+    id: 'no-empty-source',
+    hint: 'Disallow empty sources. A source containing only whitespace is considered empty.',
+    variants: [
+      {
+        hint: 'Disallow empty sources.',
+        invalidCode: '\\t\\t',
+        validCode: 'a {}\n\n/* Only comments */',
+        value: true,
+      },
+      {
+        hint: 'Allow empty sources.',
+        validCode: '\\n',
+        value: false,
+      },
+    ],
+  },
 ];
