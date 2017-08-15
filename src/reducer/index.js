@@ -1,9 +1,16 @@
 import rules from '../rules';
-import { NEXT_STEP, PREVIOUS_STEP, SKIP_STEP } from '../constants';
+import {
+  NEXT_STEP,
+  PREVIOUS_STEP,
+  SKIP_STEP,
+  RESET_CONFIG,
+  DISPLAY_CONFIG,
+  DISPLAY_OPTIONS,
+} from '../constants';
 
 const defaultState = {
   currentStep: 0,
-  mode: 'displayOptions',
+  mode: DISPLAY_OPTIONS,
   config: {
     extends: 'stylelint-config-standard',
     rules: {},
@@ -38,7 +45,7 @@ export default (state = defaultState, action) => {
             [payload.id]: payload.value,
           },
         },
-        mode: 'displayConfig',
+        mode: DISPLAY_CONFIG,
       };
 
     case PREVIOUS_STEP:
@@ -56,7 +63,18 @@ export default (state = defaultState, action) => {
       }
       return {
         ...state,
-        mode: 'displayConfig',
+        mode: DISPLAY_CONFIG,
+      };
+
+    case RESET_CONFIG:
+      return {
+        ...state,
+        currentStep: 0,
+        mode: DISPLAY_OPTIONS,
+        config: {
+          extends: 'stylelint-config-standard',
+          rules: {},
+        },
       };
 
     default:

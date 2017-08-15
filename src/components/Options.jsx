@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import Variant from './Variant';
+import BasicButton from './BasicButton';
 import { media } from '../style-utils';
 import { nextStep, prevStep, skipStep } from '../AC';
 
@@ -27,24 +28,6 @@ const Title = styled.h2`
   font-size: 20px;
 `;
 
-const Button = styled.button`
-  padding: 8px 15px;
-  font-size: 16px;
-  color: ${props => (props.disabled ? '#666' : '#fff')};
-  background-color: ${props => (props.disabled ? '#ccc' : 'crimson')};
-  border: none;
-  cursor: ${props => (props.disabled ? '#auto' : 'pointer')};
-  transition: background-color .2s ease;
-
-  &:hover {
-    background-color: ${props => (props.disabled ? '#ccc' : '#c20b2b')};
-  }
-
-  &:not(:last-child) {
-    margin-right: 10px;
-  }
-`;
-
 const Pagination = styled.div`
   margin: 10px 0;
   text-align: center;
@@ -66,10 +49,10 @@ const Options = (props) => {
     <Section>
       <Title>Choose the code sample you prefer:</Title>
       {variants}
-      <Button disabled={backButtonDisabled} onClick={props.prevStep}>
+      <BasicButton disabled={backButtonDisabled} onClick={props.prevStep}>
         Back
-      </Button>
-      <Button onClick={props.skipStep}>Skip</Button>
+      </BasicButton>
+      <BasicButton onClick={props.skipStep}>Skip</BasicButton>
       <Pagination>
         Page {currentStep + 1} of {rules.length}
       </Pagination>

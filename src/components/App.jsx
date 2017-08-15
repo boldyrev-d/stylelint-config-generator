@@ -8,6 +8,7 @@ import Footer from './Footer';
 import Config from './Config';
 import Options from './Options';
 import { media } from '../style-utils';
+import { DISPLAY_OPTIONS } from '../constants';
 
 const Wrapper = styled.div`
   max-width: 1300px;
@@ -24,7 +25,7 @@ const Main = styled.main`
 `;
 
 const App = (props) => {
-  const optionsComponent = props.mode === 'displayOptions' ? <Options /> : null;
+  const optionsComponent = props.mode === DISPLAY_OPTIONS ? <Options /> : null;
 
   return (
     <Wrapper>
