@@ -228,4 +228,23 @@ export default [
       },
     ],
   },
+  {
+    id: 'selector-pseudo-element-no-unknown',
+    hint:
+      'Disallow unknown pseudo-element selectors. All vendor-prefixed pseudo-element selectors are ignored.',
+    variants: [
+      {
+        hint: 'Disallow unknown pseudo-element selectors.',
+        invalidCode: 'a<mark>::pseudo</mark> {}\na<mark>::element</mark> {}',
+        validCode:
+          'a<mark>:before</mark> {}\na<mark>::before</mark> {}\ninput<mark>::-moz-placeholder</mark> {}',
+        value: true,
+      },
+      {
+        hint: 'Allow unknown pseudo-element selectors.',
+        validCode: 'a<mark>::PSEUDO</mark> {}',
+        value: false,
+      },
+    ],
+  },
 ];
