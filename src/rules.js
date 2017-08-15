@@ -348,4 +348,22 @@ export default [
       },
     ],
   },
+  {
+    id: 'no-descending-specificity',
+    hint:
+      'Disallow selectors of lower specificity from coming after overriding selectors of higher specificity.',
+    variants: [
+      {
+        hint: 'Disallow selectors of lower specificity.',
+        invalidCode: 'b a {}\na {}\n\na + a {}\na {}',
+        validCode: 'a {}\nb a {}\n\na {}\na + a {}',
+        value: true,
+      },
+      {
+        hint: 'Allow selectors of lower specificity.',
+        validCode: 'b > a[foo] {}\na[foo] {}',
+        value: false,
+      },
+    ],
+  },
 ];
