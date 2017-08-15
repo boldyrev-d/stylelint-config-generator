@@ -16,9 +16,12 @@ const PUBLIC_URL = process.env.PUBLIC_URL || '';
 
 const Footer = () =>
   (<Wrapper>
-    {/* TODO: change link href */}
-    <a href="https://github.com/boldyrev-d/" target="_blank" rel="noopener noreferrer">
-      <Logo src={`${PUBLIC_URL}/github.png`} alt="Stylelint Generator Page" />
+    <a
+      href="https://github.com/boldyrev-d/stylelint-config-generator"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Logo src={`${PUBLIC_URL}/github.png`} alt="Stylelint Config Generator Page" />
     </a>
   </Wrapper>);
 
