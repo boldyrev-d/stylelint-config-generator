@@ -70,4 +70,20 @@ export default [
       },
     ],
   },
+  {
+    id: 'unit-no-unknown',
+    variants: [
+      {
+        hint: 'Disallow unknown units.',
+        invalidCode: 'a { width: 10<mark>pixels</mark>; }',
+        validCode: 'a { width: 10<mark>px</mark>; }\na { width: 10<mark>Px</mark>; }',
+        value: true,
+      },
+      {
+        hint: 'Allow unknown units.',
+        validCode: 'a { width: calc(10px + 10<mark>pixels</mark>); }',
+        value: false,
+      },
+    ],
+  },
 ];
