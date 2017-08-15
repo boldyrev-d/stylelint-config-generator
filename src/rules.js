@@ -416,4 +416,22 @@ export default [
       },
     ],
   },
+  {
+    id: 'no-invalid-double-slash-comments',
+    hint:
+      'Disallow double-slash comments (//...) which are not supported by CSS and <a href="https://stackoverflow.com/questions/12298890/is-it-bad-practice-to-comment-out-single-lines-of-css-with/20192639#20192639">could lead to unexpected results</a>.',
+    variants: [
+      {
+        hint: 'Disallow double-slash comments.',
+        invalidCode: 'a { // color: pink; }',
+        validCode: 'a { /* color: pink; */ }',
+        value: true,
+      },
+      {
+        hint: 'Allow double-slash comments.',
+        validCode: '// a { color: pink; }',
+        value: false,
+      },
+    ],
+  },
 ];
