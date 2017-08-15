@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
@@ -34,59 +34,81 @@ const Pagination = styled.div`
   text-align: center;
 `;
 
-const Options = (props) => {
-  const { rules, currentStep } = props;
-  const rule = rules[currentStep];
+class Options extends Component {
+  static propTypes = {
+    // from connect
+    rules: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        hint: PropTypes.string,
+        variants: PropTypes.arrayOf(
+          PropTypes.shape({
+            code: PropTypes.string,
+            invalidCode: PropTypes.string,
+            validCode: PropTypes.string,
+            hint: PropTypes.string.isRequired,
+            value: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]).isRequired,
+          }),
+        ).isRequired,
+      }),
+    ).isRequired,
+    currentStep: PropTypes.number.isRequired,
+    nextStep: PropTypes.func.isRequired,
+    prevStep: PropTypes.func.isRequired,
+    skipStep: PropTypes.func.isRequired,
+  };
 
-  /* eslint-disable react/no-array-index-key */
-  const variants = rule.variants.map((variant, index) =>
-    <Variant key={index} variant={variant} id={rule.id} nextStep={props.nextStep} />,
-  );
-  /* eslint-enable react/no-array-index-key */
+  componentDidMount() {
+    window.addEventListener('keydown', this.handleKeyDown);
+  }
 
-  const backButtonDisabled = !currentStep;
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.handleKeyDown);
+  }
 
-  return (
-    <Section>
-      <Title>Choose the code sample you like more:</Title>
-      {rule.hint &&
-        <p>
-          {renderHTML(rule.hint)}
-        </p>}
-      {variants}
-      <BasicButton disabled={backButtonDisabled} onClick={props.prevStep}>
-        Back
-      </BasicButton>
-      <BasicButton onClick={() => props.skipStep(rule.id)}>Skip</BasicButton>
-      <Pagination>
-        Rule {currentStep + 1} of {rules.length}
-      </Pagination>
-    </Section>
-  );
-};
+  handleKeyDown = (ev) => {
+    if (ev.key === 'ArrowRight') {
+      ev.preventDefault();
+      this.props.skipStep(this.props.rules[this.props.currentStep].id);
+    }
 
-Options.propTypes = {
-  // from connect
-  rules: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      hint: PropTypes.string,
-      variants: PropTypes.arrayOf(
-        PropTypes.shape({
-          code: PropTypes.string,
-          invalidCode: PropTypes.string,
-          validCode: PropTypes.string,
-          hint: PropTypes.string.isRequired,
-          value: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]).isRequired,
-        }),
-      ).isRequired,
-    }),
-  ).isRequired,
-  currentStep: PropTypes.number.isRequired,
-  nextStep: PropTypes.func.isRequired,
-  prevStep: PropTypes.func.isRequired,
-  skipStep: PropTypes.func.isRequired,
-};
+    if (ev.key === 'ArrowLeft') {
+      ev.preventDefault();
+      this.props.prevStep();
+    }
+  };
+
+  render() {
+    const { rules, currentStep } = this.props;
+    const rule = rules[currentStep];
+
+    /* eslint-disable react/no-array-index-key */
+    const variants = rule.variants.map((variant, index) =>
+      <Variant key={index} variant={variant} id={rule.id} nextStep={this.props.nextStep} />,
+    );
+    /* eslint-enable react/no-array-index-key */
+
+    const backButtonDisabled = !currentStep;
+
+    return (
+      <Section>
+        <Title>Choose the code sample you like more:</Title>
+        {rule.hint &&
+          <p>
+            {renderHTML(rule.hint)}
+          </p>}
+        {variants}
+        <BasicButton disabled={backButtonDisabled} onClick={this.props.prevStep}>
+          Back
+        </BasicButton>
+        <BasicButton onClick={() => this.props.skipStep(rule.id)}>Skip</BasicButton>
+        <Pagination>
+          Rule {currentStep + 1} of {rules.length}
+        </Pagination>
+      </Section>
+    );
+  }
+}
 
 export default connect(
   state => ({

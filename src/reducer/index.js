@@ -49,9 +49,14 @@ export default (state = defaultState, action) => {
       };
 
     case PREVIOUS_STEP:
+      if (state.currentStep > 0) {
+        return {
+          ...state,
+          currentStep: state.currentStep - 1,
+        };
+      }
       return {
         ...state,
-        currentStep: state.currentStep - 1,
       };
 
     case SKIP_STEP:

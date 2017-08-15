@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
@@ -35,41 +35,56 @@ const Code = styled.pre`
   white-space: pre;
 `;
 
-const Config = (props) => {
-  // console.log(this.props.config);
-  const configObject = JSON.stringify(props.config, null, 4);
+class Config extends Component {
+  static propTypes = {
+    // from connect
+    config: PropTypes.shape({
+      extends: PropTypes.string.isRequired,
+      rules: PropTypes.shape({}),
+    }).isRequired,
+    mode: PropTypes.string.isRequired,
+    resetConfig: PropTypes.func.isRequired,
+  };
 
-  const resetButton =
-    props.mode === DISPLAY_CONFIG
-      ? <BasicButton onClick={props.resetConfig}>Reset</BasicButton>
-      : null;
+  componentDidMount() {
+    window.addEventListener('keydown', this.handleKeyDown);
+  }
 
-  return (
-    <Section mode={props.mode}>
-      <Title>Your config:</Title>
-      <Code>
-        {configObject}
-      </Code>
-      {resetButton}
-    </Section>
-  );
-};
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.handleKeyDown);
+  }
 
-Config.propTypes = {
-  // from connect
-  config: PropTypes.shape({
-    extends: PropTypes.string.isRequired,
-    rules: PropTypes.shape({}),
-  }).isRequired,
-  mode: PropTypes.string.isRequired,
-  resetConfig: PropTypes.func.isRequired,
-};
+  handleKeyDown = (ev) => {
+    if (this.props.mode === DISPLAY_CONFIG && ev.key === 'r') {
+      ev.preventDefault();
+      this.props.resetConfig();
+    }
+  };
+
+  render() {
+    const configObject = JSON.stringify(this.props.config, null, 4);
+
+    const resetButton =
+      this.props.mode === DISPLAY_CONFIG
+        ? <BasicButton onClick={this.props.resetConfig}>Reset</BasicButton>
+        : null;
+
+    return (
+      <Section mode={this.props.mode}>
+        <Title>Your config:</Title>
+        <Code>
+          {configObject}
+        </Code>
+        {resetButton}
+      </Section>
+    );
+  }
+}
 
 export default connect(
   state => ({
     config: state.config,
     mode: state.mode,
-    currentStep: state.currentStep,
   }),
   { resetConfig },
 )(Config);

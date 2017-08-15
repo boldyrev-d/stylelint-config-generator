@@ -77,7 +77,7 @@ Variant.propTypes = {
     invalidCode: PropTypes.string,
     validCode: PropTypes.string,
     hint: PropTypes.string.isRequired,
-    value: PropTypes.oneOfType([PropTypes.bool]).isRequired,
+    value: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]).isRequired,
   }).isRequired,
   nextStep: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
