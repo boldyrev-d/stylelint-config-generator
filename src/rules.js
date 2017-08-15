@@ -434,4 +434,25 @@ export default [
       },
     ],
   },
+  {
+    id: 'no-unknown-animations',
+    hint:
+      'Disallow unknown animations. This rule considers the identifiers of @keyframes rules defined within the same source to be known.',
+    variants: [
+      {
+        hint: 'Disallow unknown animations.',
+        invalidCode:
+          'a { animation-name: <mark>fancccy-slide</mark>; }\n@keyframes <mark>fancy-slide</mark> {}',
+        validCode:
+          'a { animation-name: <mark>fancy-slide</mark>; }\n@keyframes <mark>fancy-slide</mark> {}',
+        value: true,
+      },
+      {
+        hint: 'Allow unknown animations.',
+        validCode:
+          'a { animation-name: <mark>jump</mark>; }\n@keyframes <mark>fancy-slide</mark> {}',
+        value: false,
+      },
+    ],
+  },
 ];
