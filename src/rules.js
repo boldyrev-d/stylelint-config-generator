@@ -284,4 +284,22 @@ export default [
       },
     ],
   },
+  {
+    id: 'at-rule-no-unknown',
+    hint:
+      "Disallow unknown at-rules. This rule considers at-rules defined in the CSS Specifications, up to and including Editor's Drafts, to be known.",
+    variants: [
+      {
+        hint: 'Disallow unknown at-rules.',
+        invalidCode: '@unknown {}',
+        validCode: '@charset "UTF-8";',
+        value: true,
+      },
+      {
+        hint: 'Allow unknown at-rules.',
+        validCode: '@something {}',
+        value: false,
+      },
+    ],
+  },
 ];
