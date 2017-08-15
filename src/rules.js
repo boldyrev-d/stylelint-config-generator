@@ -157,4 +157,24 @@ export default [
       },
     ],
   },
+  {
+    id: 'declaration-block-no-redundant-longhand-properties',
+    hint:
+      "Disallow longhand properties that can be combined into one shorthand property. This rule will only complain if you've used the longhand equivalent of all the properties that the shorthand will set.",
+    variants: [
+      {
+        hint: 'Disallow longhand properties.',
+        invalidCode:
+          'a {\n  margin-top: 1px;\n  margin-right: 2px;\n  margin-bottom: 3px;\n  margin-left: 4px;\n}',
+        validCode: 'a { margin: 1px 2px 3px 4px; }',
+        value: true,
+      },
+      {
+        hint: 'Allow longhand properties.',
+        validCode:
+          'a {\n  -webkit-transition-property: top;\n  -webkit-transition-duration: 2s;\n  -webkit-transition-timing-function: ease;\n  -webkit-transition-delay: 0.5s;\n}',
+        value: false,
+      },
+    ],
+  },
 ];
