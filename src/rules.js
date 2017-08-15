@@ -247,4 +247,22 @@ export default [
       },
     ],
   },
+  {
+    id: 'selector-type-no-unknown',
+    hint:
+      'Disallow unknown type selectors. This rule considers tags defined in the HTML, SVG, and MathML specifications to be known.',
+    variants: [
+      {
+        hint: 'Disallow unknown type selectors.',
+        invalidCode: 'unknown {}',
+        validCode: 'input {}\nul li {}',
+        value: true,
+      },
+      {
+        hint: 'Allow unknown type selectors.',
+        validCode: 'tag {}',
+        value: false,
+      },
+    ],
+  },
 ];
