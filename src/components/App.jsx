@@ -18,9 +18,11 @@ const Wrapper = styled.div`
 
 const Main = styled.main`
   display: flex;
+  align-items: flex-start;
 
   ${media.tablet`
     flex-direction: column;
+    align-items: stretch;
   `};
 `;
 
