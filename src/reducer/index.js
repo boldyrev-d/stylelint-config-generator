@@ -56,8 +56,15 @@ export default (state = defaultState, action) => {
 
     case SKIP_STEP:
       if (state.currentStep + 1 < rules.length) {
+        const filterConfig = { ...state.config.rules };
+        delete filterConfig[payload.id];
+
         return {
           ...state,
+          config: {
+            ...state.config,
+            rules: { ...filterConfig },
+          },
           currentStep: state.currentStep + 1,
         };
       }

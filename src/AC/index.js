@@ -13,9 +13,10 @@ export function prevStep() {
   };
 }
 
-export function skipStep() {
+export function skipStep(id) {
   return {
     type: SKIP_STEP,
+    payload: { id },
   };
 }
 
