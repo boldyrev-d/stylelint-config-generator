@@ -302,4 +302,50 @@ export default [
       },
     ],
   },
+  {
+    id: 'comment-no-empty',
+    variants: [
+      {
+        hint: 'Disallow empty comments.',
+        invalidCode: '/**/\n/* */',
+        validCode: '/* comment */\n/*\n * Multi-line Comment*\n*/',
+        value: true,
+      },
+      {
+        hint: 'Allow empty comments.',
+        validCode: '/*\n \n*/',
+        value: false,
+      },
+    ],
+  },
+  {
+    id: 'max-nesting-depth',
+    hint: 'Limit the allowed nesting depth.',
+    variants: [
+      {
+        hint: 'Nesting depth is 1.',
+        invalidCode:
+          'a {\n  & b { /* nesting depth 1 */\n    & .foo { /* nesting depth 2 */\n      color: pink;\n    }\n  }\n}',
+        value: 1,
+      },
+      {
+        hint: 'Nesting depth is 2.',
+        invalidCode:
+          'a {\n  & b { /* nesting depth 1 */\n    & .foo { /* nesting depth 2 */\n      @media print { /* nesting depth 3 */\n        color: pink;\n      }\n    }\n  }\n}',
+        value: 2,
+      },
+      {
+        hint: 'Nesting depth is 3.',
+        invalidCode:
+          'a {\n  & b { /* nesting depth 1 */\n    & .foo { /* nesting depth 2 */\n      @media print { /* nesting depth 3 */\n        & .baz { /* nesting depth 4 */\n          color: pink;\n        }\n      }\n    }\n  }\n}',
+        value: 3,
+      },
+      {
+        hint: 'Nesting depth is 4.',
+        validCode:
+          'a {\n  & b { /* nesting depth 1 */\n    & .foo { /* nesting depth 2 */\n      @media print { /* nesting depth 3 */\n        & .baz { /* nesting depth 4 */\n          color: pink;\n        }\n      }\n    }\n  }\n}',
+        value: 4,
+      },
+    ],
+  },
 ];
