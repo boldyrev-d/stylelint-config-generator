@@ -50,4 +50,24 @@ export default [
       },
     ],
   },
+  {
+    id: 'function-linear-gradient-no-nonstandard-direction',
+    hint:
+      'Disallow direction values in linear-gradient() calls that are not valid according to the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient#Syntax">standard syntax</a>.',
+    variants: [
+      {
+        hint: 'Disallow direction values in linear-gradient() calls',
+        invalidCode:
+          '.foo { background: linear-gradient(<mark>top</mark>, #fff, #000); }\n.foo { background: linear-gradient(<mark>45</mark>, #fff, #000); }',
+        validCode:
+          '.foo { background: linear-gradient(<mark>to top</mark>, #fff, #000); }\n.foo { background: linear-gradient(<mark>45deg</mark>, #fff, #000); }',
+        value: true,
+      },
+      {
+        hint: 'Allow direction values in linear-gradient() calls',
+        validCode: '.foo { background: linear-gradient(<mark>left</mark>, #fff, #000); }',
+        value: false,
+      },
+    ],
+  },
 ];
