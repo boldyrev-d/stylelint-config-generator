@@ -16,6 +16,12 @@ const Item = styled.div`
   }
 `;
 
+const Hint = styled.h3`
+  margin: 1rem 0;
+  font-size: 17px;
+  font-weight: bold;
+`;
+
 const Code = styled.pre`
   margin-left: -20px;
   margin-right: -20px;
@@ -26,19 +32,50 @@ const Code = styled.pre`
   overflow-x: auto;
 `;
 
-const Variant = props =>
-  (<Item onClick={() => props.nextStep(props.id, props.variant.value)}>
-    <p>
-      {props.variant.hint}
-    </p>
-    <Code>
-      {renderHTML(props.variant.code)}
-    </Code>
-  </Item>);
+const InvalidCode = Code.extend`background-color: rgba(237, 20, 61, 0.05);`;
+
+const ValidCode = Code.extend`background-color: rgba(144, 238, 144, .2);`;
+
+const Variant = (props) => {
+  const { code, invalidCode, validCode, value, hint } = props.variant;
+
+  const codeComponent = code
+    ? (<Code>
+      {renderHTML(code)}
+    </Code>)
+    : (<section>
+      {invalidCode &&
+      <div>
+        <p>The following patterns are considered violations:</p>
+        <InvalidCode>
+          {renderHTML(invalidCode)}
+        </InvalidCode>
+      </div>}
+
+      {validCode &&
+      <div>
+        <p>The following patterns are not considered violations:</p>
+        <ValidCode>
+          {renderHTML(validCode)}
+        </ValidCode>
+      </div>}
+    </section>);
+
+  return (
+    <Item onClick={() => props.nextStep(props.id, value)}>
+      <Hint>
+        {hint}
+      </Hint>
+      {codeComponent}
+    </Item>
+  );
+};
 
 Variant.propTypes = {
   variant: PropTypes.shape({
-    code: PropTypes.string.isRequired,
+    code: PropTypes.string,
+    invalidCode: PropTypes.string,
+    validCode: PropTypes.string,
     hint: PropTypes.string.isRequired,
     value: PropTypes.oneOfType([PropTypes.bool]).isRequired,
   }).isRequired,

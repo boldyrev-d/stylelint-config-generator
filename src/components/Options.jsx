@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import renderHTML from 'react-render-html';
 import Variant from './Variant';
 import BasicButton from './BasicButton';
 import { media } from '../style-utils';
@@ -48,11 +49,15 @@ const Options = (props) => {
   return (
     <Section>
       <Title>Choose the code sample you like more:</Title>
+      {rule.hint &&
+        <p>
+          {renderHTML(rule.hint)}
+        </p>}
       {variants}
       <BasicButton disabled={backButtonDisabled} onClick={props.prevStep}>
         Back
       </BasicButton>
-      <BasicButton onClick={props.skipStep}>Skip</BasicButton>
+      <BasicButton onClick={() => props.skipStep(rule.id)}>Skip</BasicButton>
       <Pagination>
         Rule {currentStep + 1} of {rules.length}
       </Pagination>
@@ -65,9 +70,12 @@ Options.propTypes = {
   rules: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
+      hint: PropTypes.string,
       variants: PropTypes.arrayOf(
         PropTypes.shape({
-          code: PropTypes.string.isRequired,
+          code: PropTypes.string,
+          invalidCode: PropTypes.string,
+          validCode: PropTypes.string,
           hint: PropTypes.string.isRequired,
           value: PropTypes.oneOfType([PropTypes.bool]).isRequired,
         }),
