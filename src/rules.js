@@ -366,4 +366,20 @@ export default [
       },
     ],
   },
+  {
+    id: 'no-duplicate-selectors',
+    variants: [
+      {
+        hint: 'Disallow duplicate selectors within a stylesheet.',
+        invalidCode: '<mark>.foo</mark>,\n.bar,\n<mark>.foo</mark> {}',
+        validCode: '.foo {\n  .foo {}\n}',
+        value: true,
+      },
+      {
+        hint: 'Allow duplicate selectors within a stylesheet.',
+        validCode: '<mark>.foo</mark> {}\n.bar {}\n<mark>.foo</mark> {}',
+        value: false,
+      },
+    ],
+  },
 ];
