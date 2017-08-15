@@ -17,4 +17,19 @@ export default [
       },
     ],
   },
+  {
+    id: 'font-family-no-duplicate-names',
+    variants: [
+      {
+        hint: 'Disallow duplicate font family names.',
+        invalidCode: "a { font-family: 'Times', <mark>Times</mark>, serif; }",
+        value: true,
+      },
+      {
+        hint: 'Allow duplicate font family names.',
+        validCode: 'a { font: 1em "Arial", <mark>\'Arial\'</mark>, sans-serif; }',
+        value: false,
+      },
+    ],
+  },
 ];
