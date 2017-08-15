@@ -265,4 +265,23 @@ export default [
       },
     ],
   },
+  {
+    id: 'media-feature-name-no-unknown',
+    hint:
+      "Disallow unknown media feature names. This rule considers media feature names defined in the CSS Specifications, up to and including Editor's Drafts, to be known.",
+    variants: [
+      {
+        hint: 'Disallow unknown media feature names.',
+        invalidCode: '@media screen and (<mark>unknown</mark>) {}',
+        validCode:
+          '@media all and (<mark>monochrome</mark>) {}\n@media (<mark>min-width</mark>: 700px) {}',
+        value: true,
+      },
+      {
+        hint: 'Allow unknown media feature names.',
+        validCode: '@media screen and (<mark>unknown</mark>: 10px) {}',
+        value: false,
+      },
+    ],
+  },
 ];
