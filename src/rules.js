@@ -194,4 +194,20 @@ export default [
       },
     ],
   },
+  {
+    id: 'block-no-empty',
+    variants: [
+      {
+        hint: 'Disallow empty blocks.',
+        invalidCode: 'a {}',
+        validCode: 'a { color: pink; }',
+        value: true,
+      },
+      {
+        hint: 'Allow empty blocks.',
+        validCode: 'a { }',
+        value: false,
+      },
+    ],
+  },
 ];
