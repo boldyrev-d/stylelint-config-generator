@@ -210,4 +210,22 @@ export default [
       },
     ],
   },
+  {
+    id: 'selector-pseudo-class-no-unknown',
+    hint:
+      'Disallow unknown pseudo-class selectors. All vendor-prefixed pseudo-class selectors are ignored.',
+    variants: [
+      {
+        hint: 'Disallow unknown pseudo-class selectors.',
+        invalidCode: 'a<mark>:unknown</mark> {}\na<mark>:hoverr</mark> {}',
+        validCode: 'a<mark>:hover</mark> {}\ninput<mark>:-moz-placeholder</mark> {}',
+        value: true,
+      },
+      {
+        hint: 'Allow unknown pseudo-class selectors.',
+        validCode: 'a<mark>:UNKNOWN</mark> {}',
+        value: false,
+      },
+    ],
+  },
 ];
