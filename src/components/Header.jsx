@@ -19,8 +19,8 @@ const Mark = styled.mark`
   background-color: crimson;
 `;
 
-const Header = () =>
-  (<Wrapper>
+const Header = () => (
+  <Wrapper>
     <Title>Stylelint Config Generator</Title>
     <Paragraph>
       <a href="https://stylelint.io/">Stylelint</a> is a modern CSS linter and fixer that helps you
@@ -37,6 +37,7 @@ const Header = () =>
       <Mark>.stylelintrc</Mark>. Read more about it in{' '}
       <a href="https://stylelint.io/user-guide/configuration/">docs</a>.
     </Paragraph>
-  </Wrapper>);
+  </Wrapper>
+);
 
 export default Header;

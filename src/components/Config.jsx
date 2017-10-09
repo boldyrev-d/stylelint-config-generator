@@ -65,16 +65,14 @@ class Config extends Component {
     const configObject = JSON.stringify(this.props.config, null, 4);
 
     const resetButton =
-      this.props.mode === DISPLAY_CONFIG
-        ? <BasicButton onClick={this.props.resetConfig}>Reset</BasicButton>
-        : null;
+      this.props.mode === DISPLAY_CONFIG ? (
+        <BasicButton onClick={this.props.resetConfig}>Reset</BasicButton>
+      ) : null;
 
     return (
       <Section mode={this.props.mode}>
         <Title>Your config:</Title>
-        <Code>
-          {configObject}
-        </Code>
+        <Code>{configObject}</Code>
         {resetButton}
       </Section>
     );

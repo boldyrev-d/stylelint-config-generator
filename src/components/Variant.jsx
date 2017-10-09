@@ -34,38 +34,34 @@ const Code = styled.pre`
 
 const InvalidCode = Code.extend`background-color: rgba(237, 20, 61, 0.05);`;
 
-const ValidCode = Code.extend`background-color: rgba(144, 238, 144, .2);`;
+const ValidCode = Code.extend`background-color: rgba(144, 238, 144, 0.2);`;
 
 const Variant = (props) => {
   const { code, invalidCode, validCode, value, hint } = props.variant;
 
-  const codeComponent = code
-    ? (<Code>
-      {renderHTML(code)}
-    </Code>)
-    : (<section>
-      {invalidCode &&
-      <div>
-        <p>The following patterns are considered violations:</p>
-        <InvalidCode>
-          {renderHTML(invalidCode)}
-        </InvalidCode>
-      </div>}
+  const codeComponent = code ? (
+    <Code>{renderHTML(code)}</Code>
+  ) : (
+    <section>
+      {invalidCode && (
+        <div>
+          <p>The following patterns are considered violations:</p>
+          <InvalidCode>{renderHTML(invalidCode)}</InvalidCode>
+        </div>
+      )}
 
-      {validCode &&
-      <div>
-        <p>The following patterns are not considered violations:</p>
-        <ValidCode>
-          {renderHTML(validCode)}
-        </ValidCode>
-      </div>}
-    </section>);
+      {validCode && (
+        <div>
+          <p>The following patterns are not considered violations:</p>
+          <ValidCode>{renderHTML(validCode)}</ValidCode>
+        </div>
+      )}
+    </section>
+  );
 
   return (
     <Item onClick={() => props.nextStep(props.id, value)}>
-      <Hint>
-        {hint}
-      </Hint>
+      <Hint>{hint}</Hint>
       {codeComponent}
     </Item>
   );

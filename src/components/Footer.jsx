@@ -14,8 +14,8 @@ const Logo = styled.img`
 
 const PUBLIC_URL = process.env.PUBLIC_URL || '';
 
-const Footer = () =>
-  (<Wrapper>
+const Footer = () => (
+  <Wrapper>
     <a
       href="https://github.com/boldyrev-d/stylelint-config-generator"
       target="_blank"
@@ -23,6 +23,7 @@ const Footer = () =>
     >
       <Logo src={`${PUBLIC_URL}/github.png`} alt="Stylelint Config Generator Page" />
     </a>
-  </Wrapper>);
+  </Wrapper>
+);
 
 export default Footer;

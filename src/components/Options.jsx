@@ -83,9 +83,9 @@ class Options extends Component {
     const rule = rules[currentStep];
 
     /* eslint-disable react/no-array-index-key */
-    const variants = rule.variants.map((variant, index) =>
-      <Variant key={index} variant={variant} id={rule.id} nextStep={this.props.nextStep} />,
-    );
+    const variants = rule.variants.map((variant, index) => (
+      <Variant key={index} variant={variant} id={rule.id} nextStep={this.props.nextStep} />
+    ));
     /* eslint-enable react/no-array-index-key */
 
     const backButtonDisabled = !currentStep;
@@ -93,10 +93,7 @@ class Options extends Component {
     return (
       <Section>
         <Title>Choose the code sample you like more:</Title>
-        {rule.hint &&
-          <p>
-            {renderHTML(rule.hint)}
-          </p>}
+        {rule.hint && <p>{renderHTML(rule.hint)}</p>}
         {variants}
         <BasicButton disabled={backButtonDisabled} onClick={this.props.prevStep}>
           Back
