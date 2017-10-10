@@ -9,20 +9,14 @@ export default () => next => (action) => {
 
   const { id, value } = payload;
 
-  if (id in standard.rules) {
-    if (value === standard.rules[id]) {
-      return next({
-        type: SKIP_STEP,
-        payload: { id },
-      });
-    }
-  } else if (id in recommended.rules) {
-    if (value === recommended.rules[id]) {
-      return next({
-        type: SKIP_STEP,
-        payload: { id },
-      });
-    }
+  if (
+    (standard.rules[id] && value === standard.rules[id]) ||
+    (recommended.rules[id] && value === recommended.rules[id])
+  ) {
+    return next({
+      type: SKIP_STEP,
+      payload: { id },
+    });
   }
 
   return next(action);
