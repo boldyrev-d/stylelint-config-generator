@@ -5,19 +5,19 @@ import { css } from 'styled-components';
 export const media = {
   mobile: (...args) => css`
     @media (max-width: 768px) {
-      ${css(...args)}
+      ${css(...args)};
     }
   `,
 
   tablet: (...args) => css`
     @media (max-width: 992px) {
-      ${css(...args)}
+      ${css(...args)};
     }
   `,
 
   desktop: (...args) => css`
     @media (max-width: 1170px) {
-      ${css(...args)}
+      ${css(...args)};
     }
   `,
 };
