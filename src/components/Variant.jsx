@@ -32,12 +32,18 @@ const Code = styled.pre`
   overflow-x: auto;
 `;
 
-const InvalidCode = Code.extend`background-color: rgba(237, 20, 61, 0.05);`;
+const InvalidCode = Code.extend`
+  background-color: rgba(237, 20, 61, 0.05);
+`;
 
-const ValidCode = Code.extend`background-color: rgba(144, 238, 144, 0.2);`;
+const ValidCode = Code.extend`
+  background-color: rgba(144, 238, 144, 0.2);
+`;
 
 const Variant = (props) => {
-  const { code, invalidCode, validCode, value, hint } = props.variant;
+  const {
+    code, invalidCode, validCode, value, hint,
+  } = props.variant;
 
   const codeComponent = code ? (
     <Code>{renderHTML(code)}</Code>

@@ -37,21 +37,17 @@ const Pagination = styled.div`
 class Options extends Component {
   static propTypes = {
     // from connect
-    rules: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        hint: PropTypes.string,
-        variants: PropTypes.arrayOf(
-          PropTypes.shape({
-            code: PropTypes.string,
-            invalidCode: PropTypes.string,
-            validCode: PropTypes.string,
-            hint: PropTypes.string.isRequired,
-            value: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]).isRequired,
-          }),
-        ).isRequired,
-      }),
-    ).isRequired,
+    rules: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      hint: PropTypes.string,
+      variants: PropTypes.arrayOf(PropTypes.shape({
+        code: PropTypes.string,
+        invalidCode: PropTypes.string,
+        validCode: PropTypes.string,
+        hint: PropTypes.string.isRequired,
+        value: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]).isRequired,
+      })).isRequired,
+    })).isRequired,
     currentStep: PropTypes.number.isRequired,
     nextStep: PropTypes.func.isRequired,
     prevStep: PropTypes.func.isRequired,
