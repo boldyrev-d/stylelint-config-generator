@@ -88,7 +88,7 @@ class Options extends Component {
 
     return (
       <Section>
-        <Title>Choose the code sample you like more:</Title>
+        <Title>Choose the rule variant you like more:</Title>
         {rule.hint && <p>{renderHTML(rule.hint)}</p>}
         {variants}
         <BasicButton disabled={backButtonDisabled} onClick={this.props.prevStep}>
