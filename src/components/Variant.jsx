@@ -6,12 +6,14 @@ import renderHTML from 'react-render-html';
 const Item = styled.div`
   padding: 0 20px;
   border: 2px solid crimson;
+  transition: box-shadow 0.2s ease;
 
   &:not(:last-child) {
     margin-bottom: 20px;
   }
 
   &:hover {
+    box-shadow: 0px 2px 2px crimson, -2px 2px 2px crimson, 2px 2px 2px crimson;
     cursor: pointer;
   }
 `;
