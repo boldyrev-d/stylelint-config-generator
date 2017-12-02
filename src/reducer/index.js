@@ -55,9 +55,7 @@ export default (state = defaultState, action) => {
           currentStep: state.currentStep - 1,
         };
       }
-      return {
-        ...state,
-      };
+      return state;
 
     case SKIP_STEP:
       if (state.currentStep + 1 < rules.length) {
