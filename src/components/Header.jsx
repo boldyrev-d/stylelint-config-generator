@@ -52,23 +52,33 @@ const SkipLink = styled.a`
 const Header = () => (
   <Wrapper>
     <div>
-      <SkipLink href="#config">Skip description</SkipLink>
+      <SkipLink href="#config" title="Skip description and move to config">
+        Skip description
+      </SkipLink>
     </div>
     <Title>Stylelint Config Generator</Title>
     <Paragraph>
-      <Link href="https://stylelint.io/">Stylelint</Link> is a modern CSS linter and fixer that
-      helps you avoid errors and enforce consistent conventions in your stylesheets.
+      <Link href="https://stylelint.io/" title="Stylelint Home Page">
+        Stylelint
+      </Link>{' '}
+      is a modern CSS linter and fixer that helps you avoid errors and enforce consistent
+      conventions in your stylesheets.
     </Paragraph>
     <Paragraph>
       Create your own configuration by either extending{' '}
-      <Link href="https://github.com/stylelint/stylelint-config-standard">
+      <Link
+        href="https://github.com/stylelint/stylelint-config-standard"
+        title="stylelint-config-standard at GitHub"
+      >
         stylelint-config-standard
       </Link>.
     </Paragraph>
     <Paragraph>
       Step by step choose the rule variants you prefer and paste config object to{' '}
       <Mark>.stylelintrc</Mark>. Read more about it in{' '}
-      <Link href="https://stylelint.io/user-guide/configuration/">docs</Link>.
+      <Link href="https://stylelint.io/user-guide/configuration/" title="Stylelint User Guide">
+        docs
+      </Link>.
     </Paragraph>
   </Wrapper>
 );
