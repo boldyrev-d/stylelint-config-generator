@@ -18,6 +18,11 @@ const Item = styled.button`
     margin-bottom: 20px;
   }
 
+  &:focus {
+    outline: none;
+    box-shadow: 0px 2px 2px crimson, -2px 2px 2px crimson, 2px 2px 2px crimson;
+  }
+
   &:hover {
     box-shadow: 0px 2px 2px crimson, -2px 2px 2px crimson, 2px 2px 2px crimson;
     cursor: pointer;
