@@ -5,6 +5,8 @@ install:
   - yarn
 script:
   - yarn lint
+  - yarn lint:css
+  - yarn lint:sc
 deploy:
   skip_cleanup: true
   on:
