@@ -32,7 +32,7 @@ const App = (props) => {
   return (
     <Wrapper>
       <Header />
-      <Main>
+      <Main id="config">
         <Config />
         {optionsComponent}
       </Main>

@@ -26,8 +26,34 @@ const Link = styled.a`
   border-bottom: 1px solid #fff;
 `;
 
+const SkipLink = styled.a`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 10px 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  background: crimson;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+
+  &:focus,
+  &:active,
+  &:hover {
+    clip: auto;
+    width: 100%;
+    height: auto;
+    left: 0;
+    top: 0;
+  }
+`;
+
 const Header = () => (
   <Wrapper>
+    <div>
+      <SkipLink href="#config">Skip description</SkipLink>
+    </div>
     <Title>Stylelint Config Generator</Title>
     <Paragraph>
       <Link href="https://stylelint.io/">Stylelint</Link> is a modern CSS linter and fixer that
