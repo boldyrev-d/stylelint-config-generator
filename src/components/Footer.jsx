@@ -7,22 +7,37 @@ const Wrapper = styled.footer`
   margin: 1.5rem 0;
 `;
 
-const Logo = styled.img`
+const Logo = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 50px;
   height: 50px;
+`;
+
+const LogoImage = styled.div`
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  background-image: url(${props => props.src});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 `;
 
 const PUBLIC_URL = process.env.PUBLIC_URL || '';
 
 const Footer = () => (
   <Wrapper>
-    <a
+    <Logo
       href="https://github.com/boldyrev-d/stylelint-config-generator"
       target="_blank"
       rel="noopener noreferrer"
+      alt="Stylelint Config Generator at GitHub"
+      title="Stylelint Config Generator at GitHub"
     >
-      <Logo src={`${PUBLIC_URL}/github.png`} alt="Stylelint Config Generator Page" />
-    </a>
+      <LogoImage src={`${PUBLIC_URL}/github-logo.svg`} />
+    </Logo>
   </Wrapper>
 );
 
