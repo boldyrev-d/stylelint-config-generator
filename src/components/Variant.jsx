@@ -3,8 +3,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import renderHTML from 'react-render-html';
 
-const Item = styled.div`
+const Item = styled.button`
+  display: block;
+  width: 100%;
   padding: 0 20px;
+  box-sizing: border-box;
+  text-align: left;
+  line-height: inherit;
+  background: transparent;
   border: 2px solid crimson;
   transition: box-shadow 0.2s ease;
 
