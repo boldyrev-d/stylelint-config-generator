@@ -47,5 +47,5 @@ App.propTypes = {
 };
 
 export default connect(state => ({
-  mode: state.mode,
+  mode: state.get('mode'),
 }))(App);

@@ -81,8 +81,8 @@ class Config extends Component {
 
 export default connect(
   state => ({
-    config: state.config,
-    mode: state.mode,
+    config: state.get('config'),
+    mode: state.get('mode'),
   }),
   { resetConfig },
 )(Config);

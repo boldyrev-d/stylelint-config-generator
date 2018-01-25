@@ -1,3 +1,4 @@
+import { Map } from 'immutable';
 import rules from '../rules';
 import {
   NEXT_STEP,
@@ -8,84 +9,48 @@ import {
   DISPLAY_OPTIONS,
 } from '../constants';
 
-const defaultState = {
+const defaultState = new Map({
   currentStep: 0,
   mode: DISPLAY_OPTIONS,
-  config: {
+  config: new Map({
     extends: 'stylelint-config-standard',
-    rules: {},
-  },
+    rules: new Map({}),
+  }),
   rules,
-};
+});
 
 export default (state = defaultState, action) => {
   const { type, payload } = action;
+  const currentStep = state.get('currentStep');
 
   switch (type) {
     case NEXT_STEP:
-      if (state.currentStep + 1 < rules.length) {
-        return {
-          ...state,
-          currentStep: state.currentStep + 1,
-          config: {
-            ...state.config,
-            rules: {
-              ...state.config.rules,
-              [payload.id]: payload.value,
-            },
-          },
-        };
+      if (currentStep + 1 < rules.length) {
+        return state
+          .set('currentStep', currentStep + 1)
+          .setIn(['config', 'rules', payload.id], payload.value);
       }
-      return {
-        ...state,
-        config: {
-          ...state.config,
-          rules: {
-            ...state.config.rules,
-            [payload.id]: payload.value,
-          },
-        },
-        mode: DISPLAY_CONFIG,
-      };
+      return state
+        .set('mode', DISPLAY_CONFIG)
+        .setIn(['config', 'rules', payload.id], payload.value);
 
     case PREVIOUS_STEP:
-      if (state.currentStep > 0) {
-        return {
-          ...state,
-          currentStep: state.currentStep - 1,
-        };
+      if (currentStep > 0) {
+        return state.set('currentStep', currentStep - 1);
       }
       return state;
 
     case SKIP_STEP:
-      if (state.currentStep + 1 < rules.length) {
-        const filterConfig = { ...state.config.rules };
-        delete filterConfig[payload.id];
-
-        return {
-          ...state,
-          config: {
-            ...state.config,
-            rules: { ...filterConfig },
-          },
-          currentStep: state.currentStep + 1,
-        };
+      if (currentStep + 1 < rules.length) {
+        return state.set('currentStep', currentStep + 1).deleteIn(['config', 'rules', payload.id]);
       }
-      return {
-        ...state,
-        mode: DISPLAY_CONFIG,
-      };
+      return state.set('mode', DISPLAY_CONFIG);
 
     case RESET_CONFIG:
-      return {
-        ...state,
-        currentStep: 0,
-        mode: DISPLAY_OPTIONS,
-        config: {
-          extends: 'stylelint-config-standard',
-          rules: {},
-        },
-      };
+      return state
+        .set('currentStep', 0)
+        .set('mode', DISPLAY_OPTIONS)
+        .setIn(['config', 'rules'], {});
 
     default:
       return state;
