@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import { Map } from 'immutable';
 import BasicButton from './BasicButton';
 import { resetConfig } from '../AC';
 import { media } from '../style-utils';
@@ -38,10 +39,7 @@ const Code = styled.pre`
 class Config extends Component {
   static propTypes = {
     // from connect
-    config: PropTypes.shape({
-      extends: PropTypes.string.isRequired,
-      rules: PropTypes.shape({}),
-    }).isRequired,
+    config: PropTypes.instanceOf(Map).isRequired,
     mode: PropTypes.string.isRequired,
     resetConfig: PropTypes.func.isRequired,
   };
@@ -81,8 +79,8 @@ class Config extends Component {
 
 export default connect(
   state => ({
-    config: state.config,
-    mode: state.mode,
+    config: state.get('config'),
+    mode: state.get('mode'),
   }),
   { resetConfig },
 )(Config);

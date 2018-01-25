@@ -105,8 +105,8 @@ class Options extends Component {
 
 export default connect(
   state => ({
-    rules: state.rules,
-    currentStep: state.currentStep,
+    rules: state.get('rules'),
+    currentStep: state.get('currentStep'),
   }),
   { nextStep, prevStep, skipStep },
 )(Options);
