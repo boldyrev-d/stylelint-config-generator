@@ -22,6 +22,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .jsx --ext .js src/",
+    "lint:css": "stylelint ./src/**/*.jsx",
     "prepush": "yarn lint"
   },
   "devDependencies": {
@@ -32,7 +33,10 @@
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "7.5.1",
     "husky": "^0.14.3",
-    "now": "^9.2.7"
+    "now": "^9.2.7",
+    "stylelint": "^8.4.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.2.2"
   },
   "now": {
     "alias": "stylelint-config-generator"
