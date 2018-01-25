@@ -50,7 +50,7 @@ export default (state = defaultState, action) => {
       return state
         .set('currentStep', 0)
         .set('mode', DISPLAY_OPTIONS)
-        .setIn(['config', 'rules'], {});
+        .setIn(['config', 'rules'], new Map({}));
 
     default:
       return state;
