@@ -8,4 +8,5 @@ body {
 a {
   color: crimson;
   text-decoration: none;
+  border-bottom: 1px solid crimson;
 }
