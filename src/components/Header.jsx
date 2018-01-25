@@ -21,21 +21,28 @@ const Mark = styled.mark`
   background-color: crimson;
 `;
 
+const Link = styled.a`
+  color: #fff;
+  border-bottom: 1px solid #fff;
+`;
+
 const Header = () => (
   <Wrapper>
     <Title>Stylelint Config Generator</Title>
     <Paragraph>
-      <a href="https://stylelint.io/">Stylelint</a> is a modern CSS linter and fixer that helps you
-      avoid errors and enforce consistent conventions in your stylesheets.
+      <Link href="https://stylelint.io/">Stylelint</Link> is a modern CSS linter and fixer that
+      helps you avoid errors and enforce consistent conventions in your stylesheets.
     </Paragraph>
     <Paragraph>
       Create your own configuration by either extending{' '}
-      <a href="https://github.com/stylelint/stylelint-config-standard">stylelint-config-standard</a>.
+      <Link href="https://github.com/stylelint/stylelint-config-standard">
+        stylelint-config-standard
+      </Link>.
     </Paragraph>
     <Paragraph>
       Step by step choose the rule variants you prefer and paste config object to{' '}
       <Mark>.stylelintrc</Mark>. Read more about it in{' '}
-      <a href="https://stylelint.io/user-guide/configuration/">docs</a>.
+      <Link href="https://stylelint.io/user-guide/configuration/">docs</Link>.
     </Paragraph>
   </Wrapper>
 );
