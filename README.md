@@ -1,3 +1,20 @@
+<h1 align="center">Stylelint Config Generator</h1>
+
+<div align="center">
+  <a href="https://travis-ci.org/boldyrev-d/stylelint-config-generator">
+    <img src="https://travis-ci.org/boldyrev-d/stylelint-config-generator.svg?branch=master" alt="Build Status"/>
+  </a>
+
+  <a href="https://david-dm.org/boldyrev-d/stylelint-config-generator">
+    <img src="https://david-dm.org/boldyrev-d/stylelint-config-generator/status.svg" alt="Dependency Status"/>
+  </a>
+
+  <a href="https://david-dm.org/boldyrev-d/stylelint-config-generator?type=dev">
+    <img src="https://david-dm.org/boldyrev-d/stylelint-config-generator/dev-status.svg" alt="devDependency Status"/>
+  </a>
+</div>
+
+<hr>
 
 Application for generation [stylelint](https://stylelint.io/) config file.
 
@@ -10,6 +27,7 @@ Project was bootstrapped with [Create React App](https://github.com/facebookincu
 * Automatic deploy on now.sh by travis-ci
 
 At the moment the following rules are added:
+
 * [color-no-invalid-hex](https://stylelint.io/user-guide/rules/color-no-invalid-hex/)
 * [font-family-no-duplicate-names](https://stylelint.io/user-guide/rules/font-family-no-duplicate-names/)
 * [function-calc-no-unspaced-operator](https://stylelint.io/user-guide/rules/function-calc-no-unspaced-operator/)
