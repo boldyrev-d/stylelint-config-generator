@@ -21,9 +21,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext .jsx --ext .js src/",
-    "lint:css": "stylelint ./src/**/*.css --config ./stylelintCSSConfig.json",
+    "lint:js": "eslint --ext .jsx --ext .js src/",
     "lint:sc": "stylelint ./src/**/*.jsx",
+    "lint:css": "stylelint ./src/**/*.css --config ./stylelintCSSConfig.json",
+    "lint": "yarn lint:js && yarn lint:sc && yarn lint:css",
     "prepush": "yarn lint"
   },
   "devDependencies": {
