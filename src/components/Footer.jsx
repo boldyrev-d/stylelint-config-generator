@@ -13,6 +13,7 @@ const Logo = styled.a`
   justify-content: center;
   width: 50px;
   height: 50px;
+  border: none;
 `;
 
 const LogoImage = styled.div`
