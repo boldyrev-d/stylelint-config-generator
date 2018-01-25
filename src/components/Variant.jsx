@@ -20,11 +20,11 @@ const Item = styled.button`
 
   &:focus {
     outline: none;
-    box-shadow: 0px 2px 2px crimson, -2px 2px 2px crimson, 2px 2px 2px crimson;
+    box-shadow: 0 2px 2px crimson, -2px 2px 2px crimson, 2px 2px 2px crimson;
   }
 
   &:hover {
-    box-shadow: 0px 2px 2px crimson, -2px 2px 2px crimson, 2px 2px 2px crimson;
+    box-shadow: 0 2px 2px crimson, -2px 2px 2px crimson, 2px 2px 2px crimson;
     cursor: pointer;
   }
 `;
