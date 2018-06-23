@@ -20,7 +20,7 @@ const LogoImage = styled.div`
   width: 50px;
   height: 50px;
   margin: 0 auto;
-  background-image: url(${props => props.src});
+  background-image: url(${({ src }) => src});
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 50% 50%;

@@ -1,4 +1,6 @@
-import { NEXT_STEP, PREVIOUS_STEP, SKIP_STEP, RESET_CONFIG } from '../constants';
+import {
+  NEXT_STEP, PREVIOUS_STEP, SKIP_STEP, RESET_CONFIG,
+} from '../constants';
 
 export function nextStep(id, value) {
   return {

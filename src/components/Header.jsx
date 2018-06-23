@@ -56,29 +56,40 @@ const Header = () => (
         Skip description
       </SkipLink>
     </div>
-    <Title>Stylelint Config Generator</Title>
+    <Title>
+Stylelint Config Generator
+    </Title>
     <Paragraph>
       <Link href="https://stylelint.io/" title="Stylelint Home Page">
         Stylelint
-      </Link>{' '}
+      </Link>
+      {' '}
       is a modern CSS linter and fixer that helps you avoid errors and enforce consistent
       conventions in your stylesheets.
     </Paragraph>
     <Paragraph>
-      Create your own configuration by either extending{' '}
+      Create your own configuration by either extending
+      {' '}
       <Link
         href="https://github.com/stylelint/stylelint-config-standard"
         title="stylelint-config-standard at GitHub"
       >
         stylelint-config-standard
-      </Link>.
+      </Link>
+.
     </Paragraph>
     <Paragraph>
-      Step by step choose the rule variants you prefer and paste config object to{' '}
-      <Mark>.stylelintrc</Mark>. Read more about it in{' '}
+      Step by step choose the rule variants you prefer and paste config object to
+      {' '}
+      <Mark>
+.stylelintrc
+      </Mark>
+. Read more about it in
+      {' '}
       <Link href="https://stylelint.io/user-guide/configuration/" title="Stylelint User Guide">
         docs
-      </Link>.
+      </Link>
+.
     </Paragraph>
   </Wrapper>
 );

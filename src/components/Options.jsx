@@ -37,17 +37,21 @@ const Pagination = styled.div`
 class Options extends Component {
   static propTypes = {
     // from connect
-    rules: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      hint: PropTypes.string,
-      variants: PropTypes.arrayOf(PropTypes.shape({
-        code: PropTypes.string,
-        invalidCode: PropTypes.string,
-        validCode: PropTypes.string,
-        hint: PropTypes.string.isRequired,
-        value: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]).isRequired,
-      })).isRequired,
-    })).isRequired,
+    rules: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        hint: PropTypes.string,
+        variants: PropTypes.arrayOf(
+          PropTypes.shape({
+            code: PropTypes.string,
+            invalidCode: PropTypes.string,
+            validCode: PropTypes.string,
+            hint: PropTypes.string.isRequired,
+            value: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]).isRequired,
+          }),
+        ).isRequired,
+      }),
+    ).isRequired,
     currentStep: PropTypes.number.isRequired,
     nextStep: PropTypes.func.isRequired,
     prevStep: PropTypes.func.isRequired,
@@ -63,24 +67,42 @@ class Options extends Component {
   }
 
   handleKeyDown = (ev) => {
+    const {
+      rules,
+      currentStep,
+      // eslint-disable-next-line no-shadow
+      skipStep,
+      // eslint-disable-next-line no-shadow
+      prevStep,
+    } = this.props;
+
     if (ev.key === 'ArrowRight') {
       ev.preventDefault();
-      this.props.skipStep(this.props.rules[this.props.currentStep].id);
+      skipStep(rules[currentStep].id);
     }
 
     if (ev.key === 'ArrowLeft') {
       ev.preventDefault();
-      this.props.prevStep();
+      prevStep();
     }
   };
 
   render() {
-    const { rules, currentStep } = this.props;
+    const {
+      rules,
+      currentStep,
+      // eslint-disable-next-line no-shadow
+      skipStep,
+      // eslint-disable-next-line no-shadow
+      prevStep,
+      // eslint-disable-next-line no-shadow
+      nextStep,
+    } = this.props;
     const rule = rules[currentStep];
 
     /* eslint-disable react/no-array-index-key */
     const variants = rule.variants.map((variant, index) => (
-      <Variant key={index} variant={variant} id={rule.id} nextStep={this.props.nextStep} />
+      <Variant key={index} variant={variant} id={rule.id} nextStep={nextStep} />
     ));
     /* eslint-enable react/no-array-index-key */
 
@@ -88,15 +110,29 @@ class Options extends Component {
 
     return (
       <Section>
-        <Title>Choose the rule variant you like more:</Title>
-        {rule.hint && <p>{renderHTML(rule.hint)}</p>}
+        <Title>
+Choose the rule variant you like more:
+        </Title>
+        {rule.hint && (
+        <p>
+          {renderHTML(rule.hint)}
+        </p>
+        )}
         {variants}
-        <BasicButton disabled={backButtonDisabled} onClick={this.props.prevStep}>
+        <BasicButton disabled={backButtonDisabled} onClick={prevStep}>
           Back
         </BasicButton>
-        <BasicButton onClick={() => this.props.skipStep(rule.id)}>Skip</BasicButton>
+        <BasicButton onClick={() => skipStep(rule.id)}>
+Skip
+        </BasicButton>
         <Pagination>
-          Rule {currentStep + 1} of {rules.length}
+          Rule
+          {' '}
+          {currentStep + 1}
+          {' '}
+of
+          {' '}
+          {rules.length}
         </Pagination>
       </Section>
     );

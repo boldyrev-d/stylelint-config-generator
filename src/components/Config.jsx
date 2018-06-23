@@ -9,9 +9,9 @@ import { media } from '../style-utils';
 import { DISPLAY_CONFIG, DISPLAY_OPTIONS } from '../constants';
 
 const Section = styled.section`
-  flex-basis: ${props => (props.mode === DISPLAY_OPTIONS ? '50%' : '100%')};
+  flex-basis: ${({ mode }) => (mode === DISPLAY_OPTIONS ? '50%' : '100%')};
   padding: 30px 50px;
-  margin-right: ${props => (props.mode === DISPLAY_OPTIONS ? '20px' : '0')};
+  margin-right: ${({ mode }) => (mode === DISPLAY_OPTIONS ? '20px' : '0')};
   color: #444;
   background-color: #fff;
 
@@ -53,24 +53,35 @@ class Config extends Component {
   }
 
   handleKeyDown = (ev) => {
-    if (this.props.mode === DISPLAY_CONFIG && ev.key === 'r') {
+    // eslint-disable-next-line no-shadow
+    const { mode, resetConfig } = this.props;
+
+    if (mode === DISPLAY_CONFIG && ev.key === 'r') {
       ev.preventDefault();
-      this.props.resetConfig();
+      resetConfig();
     }
   };
 
   render() {
-    const configObject = JSON.stringify(this.props.config, null, 4);
+    // eslint-disable-next-line no-shadow
+    const { config, mode, resetConfig } = this.props;
 
-    const resetButton =
-      this.props.mode === DISPLAY_CONFIG ? (
-        <BasicButton onClick={this.props.resetConfig}>Reset</BasicButton>
-      ) : null;
+    const configObject = JSON.stringify(config, null, 4);
+
+    const resetButton = mode === DISPLAY_CONFIG ? (
+      <BasicButton onClick={resetConfig}>
+Reset
+      </BasicButton>
+    ) : null;
 
     return (
-      <Section mode={this.props.mode}>
-        <Title>Your config:</Title>
-        <Code>{configObject}</Code>
+      <Section mode={mode}>
+        <Title>
+Your config:
+        </Title>
+        <Code>
+          {configObject}
+        </Code>
         {resetButton}
       </Section>
     );

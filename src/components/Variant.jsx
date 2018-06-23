@@ -55,24 +55,36 @@ const ValidCode = Code.extend`
 
 const Variant = (props) => {
   const {
-    code, invalidCode, validCode, value, hint,
-  } = props.variant;
+    variant: {
+      code, invalidCode, validCode, value, hint,
+    },
+  } = props;
 
   const codeComponent = code ? (
-    <Code>{renderHTML(code)}</Code>
+    <Code>
+      {renderHTML(code)}
+    </Code>
   ) : (
     <section>
       {invalidCode && (
         <div>
-          <p>The following patterns are considered violations:</p>
-          <InvalidCode>{renderHTML(invalidCode)}</InvalidCode>
+          <p>
+The following patterns are considered violations:
+          </p>
+          <InvalidCode>
+            {renderHTML(invalidCode)}
+          </InvalidCode>
         </div>
       )}
 
       {validCode && (
         <div>
-          <p>The following patterns are not considered violations:</p>
-          <ValidCode>{renderHTML(validCode)}</ValidCode>
+          <p>
+The following patterns are not considered violations:
+          </p>
+          <ValidCode>
+            {renderHTML(validCode)}
+          </ValidCode>
         </div>
       )}
     </section>
@@ -80,7 +92,9 @@ const Variant = (props) => {
 
   return (
     <Item onClick={() => props.nextStep(props.id, value)}>
-      <Hint>{hint}</Hint>
+      <Hint>
+        {hint}
+      </Hint>
       {codeComponent}
     </Item>
   );

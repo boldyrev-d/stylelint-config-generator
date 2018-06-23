@@ -26,8 +26,8 @@ const Main = styled.main`
   `};
 `;
 
-const App = (props) => {
-  const optionsComponent = props.mode === DISPLAY_OPTIONS ? <Options /> : null;
+const App = ({ mode }) => {
+  const optionsComponent = mode === DISPLAY_OPTIONS ? <Options /> : null;
 
   return (
     <Wrapper>
