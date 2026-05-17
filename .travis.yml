@@ -2,13 +2,13 @@ language: node_js
 node_js:
   - "node"
 install:
-  - yarn
+  - npm ci
 script:
-  - yarn lint
+  - npm run lint
 deploy:
   skip_cleanup: true
   on:
     branch: master
   provider: script
   script:
-    - yarn build && rm ./build/static/js/*.js.map && now build --public --name stylelint-config-generator --token $NOW_TOKEN && now alias --token $NOW_TOKEN
+    - npm run build && rm ./build/static/js/*.js.map && now build --public --name stylelint-config-generator --token $NOW_TOKEN && now alias --token $NOW_TOKEN

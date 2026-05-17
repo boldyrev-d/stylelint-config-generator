@@ -1,32 +1,10 @@
 <h1 align="center">Stylelint Config Generator</h1>
 
-<div align="center">
-  <a href="https://travis-ci.org/boldyrev-d/stylelint-config-generator">
-    <img src="https://travis-ci.org/boldyrev-d/stylelint-config-generator.svg?branch=master" alt="Build Status"/>
-  </a>
+This generator builds a custom Stylelint config tailored to your preferences, extending [stylelint-config-standard](https://github.com/stylelint/stylelint-config-standard) as a sensible baseline. Pick the variant you prefer for each rule, then drop the generated object into `stylelint.config.js`. See the [docs](https://stylelint.io/user-guide/configure) for the full rule reference.
 
-  <a href="https://david-dm.org/boldyrev-d/stylelint-config-generator">
-    <img src="https://david-dm.org/boldyrev-d/stylelint-config-generator/status.svg" alt="Dependency Status"/>
-  </a>
+[Open the app](https://stylelint-config-generator.netlify.app/)
 
-  <a href="https://david-dm.org/boldyrev-d/stylelint-config-generator?type=dev">
-    <img src="https://david-dm.org/boldyrev-d/stylelint-config-generator/dev-status.svg" alt="devDependency Status"/>
-  </a>
-</div>
-
-<hr>
-
-Application for generation [stylelint](https://stylelint.io/) config file.
-
-Project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app):
-
-* Based on React/Redux
-* For style used styled-components
-* Linting with ESLint (Airbnb config)
-* Formatting with prettier
-* Automatic deploy on now.sh by travis-ci
-
-At the moment the following rules are added:
+## Supported Rules
 
 * [color-no-invalid-hex](https://stylelint.io/user-guide/rules/color-no-invalid-hex/)
 * [font-family-no-duplicate-names](https://stylelint.io/user-guide/rules/font-family-no-duplicate-names/)
@@ -53,3 +31,9 @@ At the moment the following rules are added:
 * [no-extra-semicolons](https://stylelint.io/user-guide/rules/no-extra-semicolons/)
 * [no-invalid-double-slash-comments](https://stylelint.io/user-guide/rules/no-invalid-double-slash-comments/)
 * [no-unknown-animations](https://stylelint.io/user-guide/rules/no-unknown-animations/)
+
+## Development
+
+* `npm run dev` — start the dev server
+* `npm run build` — typecheck and produce a production build in `build/`
+* `npm run preview` — serve the production build locally

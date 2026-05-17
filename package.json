@@ -2,49 +2,46 @@
   "name": "stylelint-config-generator",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "immutable": "^3.8.2",
-    "normalize.css": "^8.0.0",
-    "prop-types": "^15.6.2",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-redux": "^5.0.7",
-    "react-render-html": "^0.6.0",
-    "react-scripts": "1.1.5",
-    "redux": "^4.0.0",
-    "styled-components": "^3.4.9",
-    "stylelint-config-recommended": "^2.1.0",
-    "stylelint-config-standard": "^18.2.0"
+  "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "lint:js": "eslint --ext .jsx --ext .js src/",
-    "lint:sc": "stylelint ./src/**/*.jsx",
-    "lint:css": "stylelint ./src/**/*.css --config ./stylelintCSSConfig.json",
-    "lint": "yarn lint:js && yarn lint:sc && yarn lint:css"
+    "dev": "vite",
+    "typecheck": "tsc -b --noEmit",
+    "build": "npm run typecheck && vite build",
+    "preview": "vite preview",
+    "lint:js": "eslint \"src/**/*.{ts,tsx}\"",
+    "lint:css": "stylelint \"src/**/*.{css,ts,tsx}\"",
+    "lint": "npm run lint:js && npm run lint:css",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@reatom/core": "1001.0.0",
+    "@reatom/react": "1001.0.0",
+    "normalize.css": "8.0.1",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "styled-components": "6.4.1",
+    "stylelint-config-recommended": "18.0.0",
+    "stylelint-config-standard": "40.0.0"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "eslint": "5.6.1",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-jsx-a11y": "6.1.1",
-    "eslint-plugin-react": "7.11.1",
-    "husky": "^1.0.1",
-    "now": "^11.4.6",
-    "stylelint": "^9.6.0",
-    "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.4.0"
-  },
-  "now": {
-    "alias": "stylelint-config-generator"
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "yarn lint"
-    }
+    "@eslint/js": "9.39.4",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.2",
+    "eslint": "9.39.4",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "globals": "17.6.0",
+    "husky": "9.1.7",
+    "postcss-styled-syntax": "0.7.1",
+    "stylelint": "17.11.1",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.59.3",
+    "vite": "8.0.13"
   }
 }
