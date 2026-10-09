@@ -60,25 +60,30 @@ const Header = () => (
       <Link href="https://stylelint.io/" title="Stylelint Home Page">
         Stylelint
       </Link>{' '}
-      is a mighty CSS linter that helps you avoid errors and enforce conventions.
+      is a mighty CSS linter that helps you avoid errors and enforce
+      conventions.
     </Paragraph>
     <Paragraph>
-      This generator builds a custom Stylelint config tailored to your preferences, extending{' '}
+      This generator builds a custom Stylelint config tailored to your
+      preferences, extending{' '}
       <Link
         href="https://github.com/stylelint/stylelint-config-standard"
         title="stylelint-config-standard at GitHub"
       >
         stylelint-config-standard
-      </Link>
-      {' '}as a sensible baseline.
+      </Link>{' '}
+      as a sensible baseline.
     </Paragraph>
     <Paragraph>
-      Pick the variant you prefer for each rule, then drop the generated object into{' '}
-      <Mark>stylelint.config.js</Mark>. See the{' '}
-      <Link href="https://stylelint.io/user-guide/configure" title="Stylelint User Guide">
+      Pick the variant you prefer for each rule, then drop the generated object
+      into <Mark>stylelint.config.js</Mark>. See the{' '}
+      <Link
+        href="https://stylelint.io/user-guide/configure"
+        title="Stylelint User Guide"
+      >
         docs
-      </Link>
-      {' '}for the full rule reference.
+      </Link>{' '}
+      for the full rule reference.
     </Paragraph>
   </Wrapper>
 );

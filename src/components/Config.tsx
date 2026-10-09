@@ -50,9 +50,10 @@ const Config = reatomComponent(function Config() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const resetButton = currentMode === DISPLAY_CONFIG ? (
-    <BasicButton onClick={resetConfig}>Reset</BasicButton>
-  ) : null;
+  const resetButton =
+    currentMode === DISPLAY_CONFIG ? (
+      <BasicButton onClick={resetConfig}>Reset</BasicButton>
+    ) : null;
 
   return (
     <Section $mode={currentMode}>

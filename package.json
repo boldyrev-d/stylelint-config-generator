@@ -1,47 +1,44 @@
 {
   "name": "stylelint-config-generator",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "engines": {
-    "node": ">=20.19.0"
-  },
   "scripts": {
     "dev": "vite",
     "typecheck": "tsc -b --noEmit",
     "build": "npm run typecheck && vite build",
     "preview": "vite preview",
-    "lint:js": "eslint \"src/**/*.{ts,tsx}\"",
+    "format": "oxfmt",
+    "lint:format": "oxfmt --check",
+    "lint:js": "oxlint src",
     "lint:css": "stylelint \"src/**/*.{css,ts,tsx}\"",
-    "lint": "npm run lint:js && npm run lint:css",
+    "lint": "npm run lint:format && npm run lint:js && npm run lint:css",
     "prepare": "husky"
   },
   "dependencies": {
-    "@reatom/core": "1001.0.0",
-    "@reatom/react": "1001.0.0",
+    "@reatom/core": "1001.3.0",
+    "@reatom/react": "1001.0.1",
     "normalize.css": "8.0.1",
-    "react": "19.2.6",
-    "react-dom": "19.2.6",
-    "styled-components": "6.4.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "styled-components": "6.5.3",
     "stylelint-config-recommended": "18.0.0",
     "stylelint-config-standard": "40.0.0"
   },
   "devDependencies": {
-    "@eslint/js": "9.39.4",
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3",
-    "@vitejs/plugin-react": "6.0.2",
-    "eslint": "9.39.4",
-    "eslint-plugin-import": "2.32.0",
-    "eslint-plugin-jsx-a11y": "6.10.2",
-    "eslint-plugin-react": "7.37.5",
-    "eslint-plugin-react-hooks": "7.1.1",
-    "globals": "17.6.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
     "husky": "9.1.7",
-    "postcss-styled-syntax": "0.7.1",
-    "stylelint": "17.11.1",
-    "typescript": "6.0.3",
-    "typescript-eslint": "8.59.3",
-    "vite": "8.0.13"
+    "oxfmt": "0.72.0",
+    "oxlint": "1.87.0",
+    "oxlint-tsgolint": "7.0.2003",
+    "postcss-styled-syntax": "0.7.3",
+    "stylelint": "17.16.0",
+    "typescript": "7.0.2",
+    "vite": "8.3.4"
+  },
+  "engines": {
+    "node": ">=24.21.0"
   }
 }

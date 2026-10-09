@@ -6,7 +6,9 @@ import Variant from './Variant';
 import { currentStep, nextStep, prevStep, rules, skipStep } from '../state';
 import { media } from '../style-utils';
 
-const renderHTML = (html: string) => <span dangerouslySetInnerHTML={{ __html: html }} />;
+const renderHTML = (html: string) => (
+  <span dangerouslySetInnerHTML={{ __html: html }} />
+);
 
 const Section = styled.section`
   flex-basis: 50%;
@@ -58,8 +60,13 @@ const Options = reatomComponent(function Options() {
 
   if (!rule) return null;
 
-  const variants = rule.variants.map(variant => (
-    <Variant key={`${rule.id}-${variant.value}`} variant={variant} id={rule.id} nextStep={nextStep} />
+  const variants = rule.variants.map((variant) => (
+    <Variant
+      key={`${rule.id}-${variant.value}`}
+      variant={variant}
+      id={rule.id}
+      nextStep={nextStep}
+    />
   ));
   const backButtonDisabled = step === 0;
 

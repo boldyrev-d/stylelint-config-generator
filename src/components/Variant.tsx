@@ -2,7 +2,9 @@ import type { ReactElement } from 'react';
 import { styled } from 'styled-components';
 import type { RuleValue, Variant as RuleVariant } from '../rules';
 
-const renderHTML = (html: string) => <span dangerouslySetInnerHTML={{ __html: html }} />;
+const renderHTML = (html: string) => (
+  <span dangerouslySetInnerHTML={{ __html: html }} />
+);
 
 const Item = styled.button`
   display: block;
@@ -21,11 +23,17 @@ const Item = styled.button`
 
   &:focus {
     outline: none;
-    box-shadow: 0 2px 2px crimson, -2px 2px 2px crimson, 2px 2px 2px crimson;
+    box-shadow:
+      0 2px 2px crimson,
+      -2px 2px 2px crimson,
+      2px 2px 2px crimson;
   }
 
   &:hover {
-    box-shadow: 0 2px 2px crimson, -2px 2px 2px crimson, 2px 2px 2px crimson;
+    box-shadow:
+      0 2px 2px crimson,
+      -2px 2px 2px crimson,
+      2px 2px 2px crimson;
     cursor: pointer;
   }
 `;
@@ -60,7 +68,11 @@ type VariantProps = {
   nextStep: (id: string, value: RuleValue) => void;
 };
 
-const renderCode = ({ code, invalidCode, validCode }: RuleVariant): ReactElement => {
+const renderCode = ({
+  code,
+  invalidCode,
+  validCode,
+}: RuleVariant): ReactElement => {
   if (code) {
     return <Code>{renderHTML(code)}</Code>;
   }

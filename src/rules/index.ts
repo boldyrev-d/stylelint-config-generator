@@ -50,7 +50,10 @@ function parseRule(source: string, path: string): Rule {
   };
 }
 
-function parseFrontmatter(lines: string[], path: string): { id?: string; hint?: string } {
+function parseFrontmatter(
+  lines: string[],
+  path: string,
+): { id?: string; hint?: string } {
   const result: { id?: string; hint?: string } = {};
 
   for (let index = 0; index < lines.length; index += 1) {
@@ -125,7 +128,9 @@ function parseVariants(body: string, path: string): Variant[] {
     }
 
     if (!variant.code && !variant.invalidCode && !variant.validCode) {
-      throw new Error(`${path}: variant "${heading}" must contain a css code block`);
+      throw new Error(
+        `${path}: variant "${heading}" must contain a css code block`,
+      );
     }
 
     return variant;
@@ -162,18 +167,25 @@ function parseValue(value: string, path: string): RuleValue {
   throw new Error(`${path}: invalid variant value "${value}"`);
 }
 
-function parseCodeBlocks(content: string, path: string): { label?: 'Invalid' | 'Valid'; code: string }[] {
+function parseCodeBlocks(
+  content: string,
+  path: string,
+): { label?: 'Invalid' | 'Valid'; code: string }[] {
   const blocks: { label?: 'Invalid' | 'Valid'; code: string }[] = [];
   const pattern = /(?:(Invalid|Valid):\n)?```css\n([\s\S]*?)\n```/g;
   const fenceLines = content.match(/^```.*$/gm) ?? [];
   let match: RegExpExecArray | null;
 
   while ((match = pattern.exec(content)) !== null) {
-    const label = match[1] === 'Invalid' || match[1] === 'Valid' ? match[1] : undefined;
+    const label =
+      match[1] === 'Invalid' || match[1] === 'Valid' ? match[1] : undefined;
     blocks.push({ ...(label ? { label } : {}), code: match[2] ?? '' });
   }
 
-  if (fenceLines.length !== blocks.length * 2 || fenceLines.some((line, index) => index % 2 === 0 && line !== '```css')) {
+  if (
+    fenceLines.length !== blocks.length * 2 ||
+    fenceLines.some((line, index) => index % 2 === 0 && line !== '```css')
+  ) {
     throw new Error(`${path}: invalid css fence`);
   }
 
